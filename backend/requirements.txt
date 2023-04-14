@@ -2,3 +2,4 @@ tensorflow>=2.4.0
 librosa>=0.8.0
 pandas>=1.2.0
 matplotlib>=3.3.0
+flask>=2.2.3
