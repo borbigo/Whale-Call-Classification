@@ -58,6 +58,17 @@ def train_model(df: pd.DataFrame) -> float:
     prediction_test = model.predict(features_test)
     return accuracy_score(label_test, prediction_test)
 
+''' from 484 project
+features = []
+for i, file_dir in enumerate(file_dirs):
+    label = labels[i]
+    files = os.listdir(file_dir)
+    for file in files:
+        if file.endswith('.wav'):
+            file_path = os.path.join(file_dir, file)
+            features.append([feature, label, file])
+'''
+
 def main():
     process_files()
 
