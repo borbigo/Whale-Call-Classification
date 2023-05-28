@@ -86,6 +86,7 @@ def select_file(file_path: str) -> str:
 def main():
     if (not os.path.exists("audio_features.csv")):
         extract_features()
+    app.run(debug=True)
 
 # Creates an instance of the flask web application
 app = Flask(__name__)
@@ -143,4 +144,3 @@ def redirect_to_home(path: str):
 
 if (__name__ == "__main__"):
     main()
-    app.run(debug=True)
