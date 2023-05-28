@@ -79,12 +79,13 @@ def select_file(file_path: str) -> str:
     features = build_features(file_path)
     curr_mfcc = [mfcc for mfcc in features[-1]]
     os.remove(file_path)
-    return model.predict([features[:-1] + curr_mfcc])[0]
+    accuracy = train_model(pd.read_csv("audio_features.csv"))
+    species = model.predict([features[:-1] + curr_mfcc])[0]
+    return species, accuracy
 
 def main():
     if (not os.path.exists("audio_features.csv")):
         extract_features()
-    train_model(pd.read_csv("audio_features.csv"))
 
 # Creates an instance of the flask web application
 app = Flask(__name__)
@@ -118,8 +119,8 @@ def calculate(file_name: str):
     from the uploaded audio and a prediction will be made. The accuracy score
     will be displayed as well as the name of species classified by the model.
     """
-    species = select_file(os.path.join("user_uploads", file_name))
-    return render_template("results.html", species=species)
+    species, accuracy = select_file(os.path.join("user_uploads", file_name))
+    return render_template("results.html", species=species, accuracy=f"{accuracy * 100:.2f}%")
 
 
 @app.route("/display_error/<message>")
