@@ -13,30 +13,37 @@ x_labels = [
     'Southern Right', 'Sperm'
 ]
 
+# Set the figure and axis color
+fig = plt.figure(facecolor='#4d6680')
+ax = fig.add_subplot(111, facecolor='#4d6680')
+
 # Plot the graph
-plt.figure()
+ax.plot(range(len(values)), values, color='white')
 
 # Plot bullet points
 for i in range(len(values)):
-    color = 'r' if i == red_index else 'g'
-    plt.plot(i, values[i], 'o', markersize=10, color=color)
-
-    # Calculate y-coordinate for the text
-    y_offset = 0.3
-    y = values[i] + y_offset
-
-    plt.text(i, y, str(values[i]), ha='center', va='top', color='black')
-
-# Plot line connecting the points
-plt.plot(range(len(values)), values, 'k-')
+    color = '#990000' if i == red_index else '#1b7e1b'
+    ax.plot(i, values[i], 'o', markersize=10, color=color)
+    ax.text(i, values[i], str(values[i]), ha='center', va='bottom', color='white')
 
 # Set x-axis tick labels
-plt.xticks(range(len(values)), x_labels, rotation=45)
+ax.set_xticks(range(len(values)))
+ax.set_xticklabels(x_labels, rotation=45, color='white')
 
 # Set labels and title
-plt.xlabel('Species')
-plt.ylabel('Accuracy Scores')
-plt.title('Testing Results')
+ax.set_xlabel('Species', color='white')
+ax.set_ylabel('Values', color='white')
+ax.set_title('Graph with Bullet Points and Line', color='white')
+
+# Set the spines color to white
+ax.spines['top'].set_color('white')
+ax.spines['bottom'].set_color('white')
+ax.spines['left'].set_color('white')
+ax.spines['right'].set_color('white')
+
+
+# Set the background color
+ax.set_facecolor('#4d6680')
 
 # Show the graph
 plt.show()
