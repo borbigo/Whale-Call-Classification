@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 values = [74.44, 72.18, 77.44, 79.70, 82.71, 79.70, 74.44, 82.71, 81.95, 72.93, 81.95, 79.70, 81.20]
 
 # Set the index where the red dot should be plotted
-red_index = 4
+red_index = 5
 
 # X-axis labels
 x_labels = [
