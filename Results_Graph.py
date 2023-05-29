@@ -32,8 +32,8 @@ ax.set_xticklabels(x_labels, rotation=45, color='white')
 
 # Set labels and title
 ax.set_xlabel('Species', color='white')
-ax.set_ylabel('Values', color='white')
-ax.set_title('Graph with Bullet Points and Line', color='white')
+ax.set_ylabel('Accuracy Score', color='white')
+ax.set_title('Testing Results', color='white')
 
 # Set the spines color to white
 ax.spines['top'].set_color('white')
